@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SherkoPortfolio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('ha.jpg'); /* Initial background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            transition: background-image 0.5s; /* Add transition for smooth background image change */
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: #333;
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu .logo {
+            text-align: center;
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            cursor: pointer; /* Add cursor pointer for clickable effect */
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu ul li {
+            text-align: center;
+        }
+
+        .menu ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            display: block;
+            padding: 10px 0;
+            transition: color 0.3s; /* Add a transition for smooth color change */
+        }
+
+        /* Add hover effect to change text color to light blue */
+        .menu ul li a:hover {
+            color: #1A9FF9;
+        }
+
+        .menu-bottom {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .menu-bottom .language {
+            color: #ccc;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .menu-bottom .line {
+            background-color: #ccc;
+            height: 1px;
+            margin-top: 5px;
+        }
+
+        .content {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .content h1 {
+            margin: 0;
+            position: relative; /* Relative position for button placement */
+            color: #000; /* Default text color */
+            font-size: 24px; /* Increase font size for mobile */
+        }
+
+        /* Change the text color for the second and fourth images */
+        body[data-bg="ham.jpg"] .content h1,
+        body[data-bg="hamaa.jpg"] .content h1 {
+            color: #fff; /* White text color */
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center; /* Center items horizontally */
+            margin-top: 20px;
+        }
+
+        .button {
+            background-color: #1A9FF9;
+            color: #fff;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 24px; /* Increase the font size for mobile */
+            cursor: pointer;
+            margin-top: 10px; /* Add some space between the text and the button */
+        }
+
+        .button-login {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #1A9FF9;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Hide the button on hover */
+        .button:hover {
+            opacity: 0;
+        }
+
+        /* Media Query for Mobile Devices */
+        @media (max-width: 768px) {
+            .menu {
+                width: 100%; /* Full width for mobile devices */
+                height: auto; /* Remove fixed height for mobile devices */
+                flex-direction: row; /* Align menu items horizontally */
+            }
+
+            .menu .logo {
+                width: auto; /* Auto width for logo on mobile devices */
+            }
+
+            .menu ul {
+                flex-direction: row; /* Align menu items horizontally on mobile devices */
+                justify-content: space-around; /* Add space between menu items */
+                width: 100%; /* Full width for menu items on mobile devices */
+                margin-top: 20px;
+            }
+
+            .menu-bottom {
+                position: static; /* Remove fixed position for language selection */
+                margin-top: 20px;
+            }
+
+            .content h1 {
+                font-size: 18px; /* Reduce font size for smaller screens */
+            }
+
+            .button {
+                font-size: 18px; /* Reduce font size for mobile devices */
+            }
+        }
+    </style>
+</head>
+<body data-bg="ha.jpg"> <!-- Set initial background image -->
+    <div class="menu">
+        <div class="logo" onclick="toggleBackground()">SherkoPortfolio</div>
+        <ul>
+            <li><a href="#">Build Website</a></li>
+            <li><a href="#">See Examples</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+        <div class="menu-bottom">
+            <div class="line"></div>
+            <span class="language">EN</span> | <span class="language">Polski</span>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Create your own online portfolio website</h1>
+        <!-- Get Started Button -->
+        <div class="button-container">
+            <button class="button">Get Started</button>
+        </div>
+    </div>
+    <button class="button-login">Login</button>
+
+    <script>
+        let backgroundIndex = 0;
+        const backgrounds = ['ha.jpg', 'ham.jpg', 'hama.jpg', 'hamaa.jpg', 'hamaaa.jpg'];
+
+        function toggleBackground() {
+            const body = document.body;
+            backgroundIndex = (backgroundIndex + 1) % backgrounds.length;
+            body.style.backgroundImage = `url('${backgrounds[backgroundIndex]}')`;
+            body.setAttribute('data-bg', backgrounds[backgroundIndex]); /* Update data attribute for text color change */
+        }
+    </script>
+</body>
+</html>
